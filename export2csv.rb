@@ -56,17 +56,20 @@ def initialize()
     return nil
     end#if
     fcs.flatten!
-    fcs2=[]
+    fcs2=[fcs2.unshift(("area")+sep+("material")+sep+("number of edge"+sep+("unit vector_x")+sep+("unit vector_y")+sep+("unit vector_z")))]
     begin
-      fcs.each{|v|fcs2 << v.area.to_m.to_s.gsub(/^~ /,'').to_s+sep+v.material.name.gsub(/^~ /,'')+sep+v.edges.length.to_s+sep+v.normal.x.to_s+sep+v.normal.y.to_s+sep+v.normal.z.to_s}
+      fcs.each{|v|fcs2 << ((v.area*0.000645*10).round.to_f/10).to_s.gsub(/^~ /,'').to_s+sep+v.material.name.gsub(/^~ /,'')+sep+v.edges.length.to_s+sep+v.normal.x.to_s+sep+v.normal.y.to_s+sep+v.normal.z.to_s}
     rescue =>ex### trap if open\\
       print(ex)
       UI.messagebox("every face must have it's material")
     end
     volume=Volume.calculate(fcs)#calculate volume
-    puts(((volume* 0.000016387064 *1000).round.to_f/1000).to_s )
+    puts(((volume* 0.000016387*100).round.to_f/100).to_s )
     puts("volume")
     path=model.path
+
+    fcs2.unshift(((volume* 0.000016387064 *1000).round.to_f/1000).to_s+sep+("m3"))
+    fcs2.unshift("volume")
     
     puts(path)
     puts("＜カレントディレクトリの書き出し＞")
@@ -86,6 +89,7 @@ def initialize()
       UI.messagebox("facees File:\n\n  "+ofile+"\n\nCannot be written - it's probably already open.\nClose it and try making it again...\n\nExiting...")
     return nil
     end
+    
     fcs2.each{|pt|file.puts(pt)}
     fcs2.each{|pt|puts(pt)}
     puts(fcs2.length.to_s)    
