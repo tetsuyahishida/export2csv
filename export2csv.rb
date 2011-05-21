@@ -58,7 +58,7 @@ def initialize()
     fcs.flatten!
     fcs2=[]
     begin
-      fcs.each{|v|fcs2 << v.area.to_s.gsub(/^~ /,'').to_s+sep+v.material.name.gsub(/^~ /,'')+sep+v.edges.length.to_s+sep+v.normal.x.to_s+sep+v.normal.y.to_s+sep+v.normal.z.to_s}
+      fcs.each{|v|fcs2 << v.area.to_m.to_s.gsub(/^~ /,'').to_s+sep+v.material.name.gsub(/^~ /,'')+sep+v.edges.length.to_s+sep+v.normal.x.to_s+sep+v.normal.y.to_s+sep+v.normal.z.to_s}
     rescue =>ex### trap if open\\
       print(ex)
       UI.messagebox("every face must have it's material")
