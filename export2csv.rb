@@ -29,7 +29,7 @@ end
 ###--------------
 def Volume::calculate(fcs)
    volume=0
-   for fcs in entities
+   for face in fcs
       next unless face.kind_of? Sketchup::Face
       volume += (2*face.area*face.vertices[0].position.to_a.dot(face.normal))/6
       UI.messagebox("entities")
@@ -63,7 +63,9 @@ def initialize()
       print(ex)
       UI.messagebox("every face must have it's material")
     end
+    volume=Volume.calculate(fcs)#calculate volume
     path=model.path
+    
     puts(path)
     puts("＜カレントディレクトリの書き出し＞")
     if not path or path==""
