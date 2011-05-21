@@ -64,6 +64,8 @@ def initialize()
       UI.messagebox("every face must have it's material")
     end
     volume=Volume.calculate(fcs)#calculate volume
+    puts(((volume* 0.000016387064 *1000).round.to_f/1000).to_s )
+    puts("volume")
     path=model.path
     
     puts(path)
