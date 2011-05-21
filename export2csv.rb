@@ -41,7 +41,6 @@ def Volume::calculate(fcs)
 end
 def initialize()
     $KCODE = "u";
-    print("日本語テスト\n")
     sep="," ### <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     ext="csv" ### <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     model=Sketchup.active_model
@@ -50,13 +49,12 @@ def initialize()
     mat=
     ss.each{|e|fcs << e if e.class==Sketchup::Face }
     puts(fcs)
-    print("の面を読みこみ")
     if not fcs
       UI.messagebox("No Vertices were Selected.\nExiting.")
     return nil
     end#if
     fcs.flatten!
-    fcs2=[fcs2.unshift(("area")+sep+("material")+sep+("number of edge"+sep+("unit vector_x")+sep+("unit vector_y")+sep+("unit vector_z")))]
+    fcs2=[fcs2.unshift(("area[m2]")+sep+("material")+sep+("number of edge"+sep+("unit vector_x")+sep+("unit vector_y")+sep+("unit vector_z")))]
     begin
       fcs.each{|v|fcs2 << ((v.area*0.000645*10).round.to_f/10).to_s.gsub(/^~ /,'').to_s+sep+v.material.name.gsub(/^~ /,'')+sep+v.edges.length.to_s+sep+v.normal.x.to_s+sep+v.normal.y.to_s+sep+v.normal.z.to_s}
     rescue =>ex### trap if open\\
@@ -68,8 +66,8 @@ def initialize()
     puts("volume")
     path=model.path
 
-    fcs2.unshift(((volume* 0.000016387064 *1000).round.to_f/1000).to_s+sep+("m3"))
-    fcs2.unshift("volume")
+    fcs2.unshift(((volume* 0.000016387064 *1000).round.to_f/1000).to_s)
+    fcs2.unshift("volume[m3]")
     
     puts(path)
     puts("＜カレントディレクトリの書き出し＞")
