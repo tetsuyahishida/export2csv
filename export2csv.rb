@@ -108,7 +108,7 @@ def initialize()
     end
 end#def
 end#class
-if( not file_loaded?("Export2csv.rb") )
+if( not file_loaded?("export2csv.rb") )
   UI.menu("Plugins").add_item("export2csv Tool") { Export2csv.new }
   dir = Sketchup.find_support_file("Plugins")
   cmd = UI::Command.new("export2csv Tool") { Export2csv.new }
@@ -117,7 +117,7 @@ if( not file_loaded?("Export2csv.rb") )
   tb = UI::Toolbar.new("export2csv Tool")
   tb.add_item cmd
   tb.show if tb.get_last_state == -1
-  file_loaded("Export2csv.rb")
+  file_loaded("export2csv.rb")
 end
 
 
