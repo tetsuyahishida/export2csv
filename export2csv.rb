@@ -56,11 +56,11 @@ def initialize()
     sep+("unit vector_y")+
     sep+("unit vector_z")]
     begin
-      fcs.each{|v|fcs2 << ((v.area*0.000645*10).round.to_f/10).to_s.gsub(/^~ /,'').to_s+
-        sep+v.material.name.gsub(/^~ /,'')+
-        sep+v.edges.length.to_s+
-        sep+v.normal.x.to_s+
-        sep+v.normal.y.to_s+
+      fcs.each{|v|fcs2 << ((v.area*0.000645*10).round.to_f/10).to_s.gsub(/^~ /,'').to_s+\
+        sep+v.material.name.gsub(/^~ /,'')+\
+        sep+v.edges.length.to_s+\
+        sep+v.normal.x.to_s+\
+        sep+v.normal.y.to_s+\
         sep+v.normal.z.to_s}
     rescue =>ex### trap if open\\
       print(ex)
