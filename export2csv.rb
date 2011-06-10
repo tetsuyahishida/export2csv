@@ -1,7 +1,6 @@
 =begin
 (c) TIG 2011
-Type
-  Exportvertices2csv.new
+
 in the Ruby Console.
 Exports all Vertices is a Selection to a X,Y,Z 'CSV' file.
 Edit sep="," if something other than a separating comma is desired e.g. ';'
@@ -27,7 +26,7 @@ class Geom::Point3d
    end
 end
 ###--------------
-def Volume::calculate(fcs)
+def volume(fcs)
    volume=0
    for face in fcs
       next unless face.kind_of? Sketchup::Face
@@ -67,7 +66,7 @@ def initialize()
       print(ex)
       UI.messagebox("every face must have it's material")
     end
-    volume=Volume.calculate(fcs)#calculate volume
+    volume=self.volume(fcs)#calculate volume
     puts(((volume* 0.000016387*100).round.to_f/100).to_s )
     puts("volume")
     path=model.path
