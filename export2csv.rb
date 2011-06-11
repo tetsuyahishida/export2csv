@@ -1,21 +1,6 @@
 =begin
-(c) TIG 2011
-
-in the Ruby Console.
-Exports all Vertices is a Selection to a X,Y,Z 'CSV' file.
-Edit sep="," if something other than a separating comma is desired e.g. ';'
-Make sep="\t" if a TSV file is desired and change ext="csv" to ext="tsv".
-It uses the current Model Units/accuracy with the approximate '~ ' and 
-unit suffix [if any] removed; e.g. change Model Units to 'meters' 3dp to 
-get exported csv in meters 1.234 - don't use 'fraction' 1' 2 1/2" formats, 
-always use a 'decimal' format.
-1.0 20110105 First issue.
-1.1 20110116 Wrapped in protective class.
-=end
-=begin
-Tetsuya Hishida
+(c)Tetsuya Hishida
 2.1 20110416 add icon change name to export2csv
-test whether I can over write this
 =end
 require 'sketchup.rb'
 ###
